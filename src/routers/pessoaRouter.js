@@ -6,6 +6,7 @@ const pessoaController = new PessoaController();
 const router = Router();
 
 router.get('/pessoas', (req, res) => pessoaController.findAll(req, res));
+router.get('/pessoas/all', (req, res) => pessoaController.findDataScope(req, res));
 router.get('/pessoas/:id', (req, res) => pessoaController.findById(req, res));
 router.post('/pessoas', (req, res) => pessoaController.create(req, res));
 router.put('/pessoas/:id', (req, res) => pessoaController.update(req, res));

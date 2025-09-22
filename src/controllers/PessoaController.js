@@ -18,6 +18,17 @@ class PessoaController extends Controller {
             return res.status(500).json({ error: erro.message });
         }
     }
+
+    /* metodo para pegar registro por um scopo da model de Pessoa */
+    async findDataScope(req, res) {
+        try {
+            const listResult = await pessoaService.
+                findDataScope();
+            return res.status(200).json(listResult);
+        } catch (erro) {
+            return res.status(500).json({ error: erro.message });
+        }
+    }
 }
 
 module.exports = PessoaController;

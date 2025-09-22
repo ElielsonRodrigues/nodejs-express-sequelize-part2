@@ -13,6 +13,12 @@ class PessoaService extends Services {
         const listMatriculas = await estudante.getAulasMatriculadas();
         return listMatriculas;
     }
+
+    async findDataScope() {
+        // passa o nome do meu scopo da model de pessoa 'findAllData'
+        const resultList = await super.findDataScope('findAllData');
+        return resultList;
+    }
 }
 
 module.exports = PessoaService;

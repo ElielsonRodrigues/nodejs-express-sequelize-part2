@@ -10,6 +10,13 @@ class Services {
         return dataSource[this.model].findAll();
     }
 
+    /* este metodo e responsavel por pegar registro por uma determinado
+       scopo
+    */
+    async findDataScope(nameEscopo) {
+        return dataSource[this.model].scope(nameEscopo).findAll();
+    }
+
     async findById(id) {
         return dataSource[this.model].findByPk(id);
     }
@@ -22,15 +29,6 @@ class Services {
         return dataSource[this.model].update(data, {
             where: { id: id }
         });
-        /*
-        const updatedParams = dataSource[this.model].update(data, {
-            where: { id: id }
-        });
-        if (updatedParams[0] === 0) {
-            return false;
-        }
-        return true;
-        */
     }
 
     async deleteById(id) {

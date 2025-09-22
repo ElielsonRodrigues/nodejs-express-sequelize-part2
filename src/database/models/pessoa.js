@@ -31,7 +31,13 @@ module.exports = (sequelize, DataTypes) => {
                        numero 2 do cliente 
                     */
       where: {
-        ativo: true
+        ativo: true // retorna somente os ativos
+      }
+    },
+    // aqui podemos inlcuir varios escopos com diferente clausulas
+    scopes: {
+      findAllData: { // nome do meu escopo
+        where: {} // clausula ou condição, retorna todos os registros
       }
     }
   });
