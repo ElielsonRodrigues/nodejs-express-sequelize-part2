@@ -17,7 +17,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   Pessoa.init({
     nome: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: { /* exemplo de como usar valdações no modelo */
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: {
+          args: true,
+          msg: "Informe um 'email'valido."
+        }
+      }
+    },
     cpf: DataTypes.STRING,
     ativo: DataTypes.BOOLEAN,
     role: DataTypes.STRING
@@ -37,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     // aqui podemos inlcuir varios escopos com diferente clausulas
     scopes: {
       findAllData: { // nome do meu escopo
-        where: {} // clausula ou condição, retorna todos os registros
+        where: {} // clausula ou condição, no caso retorna todos os registros
       }
     }
   });
