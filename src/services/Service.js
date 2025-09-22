@@ -17,9 +17,21 @@ class Services {
         return dataSource[this.model].scope(nameEscopo).findAll();
     }
 
+    /* Diferente do findOne esse metodo aceita um ID como parametro */
     async findById(id) {
         return dataSource[this.model].findByPk(id);
     }
+
+    /* Diferente do findById esse metodo aceita uma clausula WHERE como parametro */
+    async findOne(where) {
+        return dataSource[this.model].findOne({
+            where: {
+                ...where
+            }
+        });
+    }
+
+
 
     async create(data) {
         return dataSource[this.model].create(data);

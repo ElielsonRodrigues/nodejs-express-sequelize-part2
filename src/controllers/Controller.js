@@ -23,6 +23,21 @@ class Controller {
         }
     }
 
+    async findOne(req, res) {
+
+        const { ...params } = req.params;
+
+        console.log(params);
+        /*
+        try {
+            const data = await this.entityService.findOne(p);
+            return res.status(200).json(data);
+        } catch (erro) {
+            return res.status(500).json({ error: erro.message });
+        }
+        */
+    }
+
     async create(req, res) {
         try {
             let getData = req.body;
