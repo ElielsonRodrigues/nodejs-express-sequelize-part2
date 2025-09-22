@@ -25,7 +25,15 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Pessoa',
     tableName: 'pessoas',
-    paranoid: true /* Soft Delete */
+    paranoid: true, /* Soft Delete */
+    defaultScope: { /* Utilizando metodolodia de escopo padrão do
+                       ORM sequelize, Referente ao requisito 
+                       numero 2 do cliente 
+                    */
+      where: {
+        ativo: true
+      }
+    }
   });
   return Pessoa;
 };
