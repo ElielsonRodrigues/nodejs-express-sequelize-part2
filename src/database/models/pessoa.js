@@ -1,23 +1,32 @@
 'use strict';
+
+const cpfIsValid = require('../../utils/isValidCpfHelpers.js');
+
 const {
   Model
 } = require('sequelize');
 
-
-const cpfIsValid = require('../../utils/isValidCpfHelpers.js');
-
-
 module.exports = (sequelize, DataTypes) => {
   class Pessoa extends Model {
     static associate(models) {
-      Pessoa.hasOne(models.Curso, {
+
+      
+      Pessoa.hasMany(models.Curso, {
         foreignKey: 'docente_id'
       });
-      Pessoa.hasOne(models.Matricula, {
+
+      Pessoa.hasMany(models.Matricula, {
         foreignKey: 'estudante_id',
-        scope: { status: 'matriculado' }, /* RETIRANDO O SCOP TRAS TODAS AS MATRICULAS */
-        as: 'aulasMatriculadas' /*Ajuda nas associação mixins que sera usando em pessoa service */
+        scope: { status: 'matriculado' }, /* Minxins para trazer todos os registro por estudanteId com status Ativo
+                                          , RETIRANDO O SCOPE TRAS TODAS AS MATRICULAS */
+        as: 'matriculasAtivas' /*Ajuda nas associação mixins que sera usando em pessoaService */
       });
+
+      Pessoa.hasMany(models.Matricula, {
+        foreignKey: 'estudante_id', /* Minxins para trazer todos os registro por estudanteId */
+        as: 'todasMatriculas' /*Ajuda nas associação mixins que sera usando em pessoaService */
+      });
+
     }
   }
   Pessoa.init({

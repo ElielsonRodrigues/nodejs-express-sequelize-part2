@@ -8,17 +8,26 @@ class PessoaService extends Services {
         super('Pessoa');
     }
 
-    async findMatriculaByEstudanteId(id) {
+    async findMatriculasAtivasByEstudanteId(id) {
         const estudante = await super.findById(id);
-        const listMatriculas = await estudante.getAulasMatriculadas();
+        const listMatriculas = await estudante.getMatriculasAtivas();
         return listMatriculas;
     }
+
+     async findMatriculasByEstudanteId(id) {
+        const estudante = await super.findById(id);
+        const listMatriculas = await estudante.getTodasMatriculas();
+        return listMatriculas;
+    }
+
+
 
     async findDataScope() {
         // passa o nome do meu scopo da model de pessoa 'findAllData'
         const resultList = await super.findDataScope('findAllData');
         return resultList;
     }
+
 }
 
 module.exports = PessoaService;
