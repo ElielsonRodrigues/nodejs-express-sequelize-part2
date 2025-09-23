@@ -10,10 +10,10 @@ class PessoaController extends Controller {
 
     // retorna todos os registro ativos por estudante, utilizando o mixins 'matriculasAtivas' do service de pessoa
     async findMatriculasAtivasByEstudanteId(req, res) {
-        const { estudanteId } = req.params;
+        const { estudante_id } = req.params;
         try {
             const listResult = await pessoaService.
-                findMatriculasAtivasByEstudanteId(Number(estudanteId));
+                findMatriculasAtivasByEstudanteId(Number(estudante_id));
             return res.status(200).json(listResult);
         } catch (erro) {
             return res.status(500).json({ error: erro.message });
@@ -22,10 +22,10 @@ class PessoaController extends Controller {
 
     // retorna todos os registro por estudante, utilizando o mixins 'todasMatriculas' do service de pessoa
     async findMatriculasByEstudanteId(req, res) {
-        const { estudanteId } = req.params;
+        const { estudante_id } = req.params;
         try {
             const listResult = await pessoaService.
-                findMatriculasByEstudanteId(Number(estudanteId));
+                findMatriculasByEstudanteId(Number(estudante_id));
             return res.status(200).json(listResult);
         } catch (erro) {
             return res.status(500).json({ error: erro.message });

@@ -31,8 +31,6 @@ class Services {
         });
     }
 
-
-
     async create(data) {
         return dataSource[this.model].create(data);
     }
