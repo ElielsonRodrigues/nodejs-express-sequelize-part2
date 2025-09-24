@@ -6,8 +6,11 @@ class Services {
         this.model = nameModel;
     }
 
-    async findAll() {
-        return dataSource[this.model].findAll();
+    async findAll(where = {}) {
+        return dataSource[this.model].findAll(
+            {
+                where: { ...where }
+            });
     }
 
     /* este metodo e responsavel por pegar registro por uma determinado
