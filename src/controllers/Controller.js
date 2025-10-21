@@ -29,7 +29,6 @@ class Controller {
 
         const { ...params } = req.params;
         const where = convertIds(params);
-        console.log(where);
         try {
             const data = await this.entityService.findOne(where);
             return res.status(200).json(data);

@@ -18,7 +18,11 @@ router.delete('/pessoas/:id', (req, res) => pessoaController.deleteById(req, res
 
 /*Criando end-point especifico a parte que listas as matriculas por id do Estudante */
 router.get('/pessoas/:estudante_id/matriculas/all', (req, res) => pessoaController.findMatriculasByEstudanteId(req, res));
+router.get('/pessoas/:estudante_id/confirmadas', (req, res) => matriculaController.findMatriculasByEstudanteId(req, res));
+
 router.get('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaController.findOne(req, res));
 router.get('/pessoas/:estudante_id/matriculas', (req, res) => pessoaController.findMatriculasAtivasByEstudanteId(req, res));
- 
+
+
+
 module.exports = router;
