@@ -35,14 +35,8 @@ class Services {
         });
     }
 
-    async countRecords(where) {
-        return dataSource[this.model].findAndCountAll({
-            where: {
-                ...where
-            },
-            limit: 2, // define o limite de registro a serem exibidos
-            order: [['id', 'DESC']] // define a exibição dos itens e a ordenação 'ASC' =  ORDENAÇÃO ASCENDENTE  E 'DESC' ORDENAÇÃO DESCENDENTE
-        });
+    async countRecords(options) {
+        return dataSource[this.model].findAndCountAll({ ...options });
     }
 
     async create(data) {
