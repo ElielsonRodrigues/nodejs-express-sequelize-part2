@@ -14,6 +14,7 @@ router.get('/pessoas/all', (req, res) => pessoaController.findDataScope(req, res
 router.get('/pessoas/:id', (req, res) => pessoaController.findById(req, res));
 router.post('/pessoas', (req, res) => pessoaController.create(req, res));
 router.put('/pessoas/:id', (req, res) => pessoaController.update(req, res));
+router.put('/pessoas/:estudante_id/cancelar', (req, res) => pessoaController.cancelRecordByEstudanteId(req, res));
 router.delete('/pessoas/:id', (req, res) => pessoaController.deleteById(req, res));
 
 /*Criando end-point especifico a parte que listas as matriculas por id do Estudante */

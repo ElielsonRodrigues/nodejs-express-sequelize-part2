@@ -31,7 +31,7 @@ class PessoaController extends Controller {
             return res.status(500).json({ error: erro.message });
         }
     }
-    
+
 
     /* metodo para pegar registro por um scopo da model de Pessoa */
     async findDataScope(req, res) {
@@ -39,6 +39,17 @@ class PessoaController extends Controller {
             const listResult = await pessoaService.
                 findDataScope();
             return res.status(200).json(listResult);
+        } catch (erro) {
+            return res.status(500).json({ error: erro.message });
+        }
+    }
+
+    /* metodo para pegar registro por um scopo da model de Pessoa */
+    async cancelRecordByEstudanteId(req, res) {
+        const { estudante_id } = req.params;
+        try {
+            await pessoaService.cancelRecordMatriculaByEstudanteId(Number(estudante_id));
+            return res.status(200).json({ message: `O estudante ${estudante_id} e suas matriculas foram todas canceladas.` });
         } catch (erro) {
             return res.status(500).json({ error: erro.message });
         }

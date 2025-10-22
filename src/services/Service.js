@@ -43,9 +43,9 @@ class Services {
         return dataSource[this.model].create(data);
     }
 
-    async update(id, data) {
+    async update(where, data) {
         return dataSource[this.model].update(data, {
-            where: { id: id }
+            where: { ...where }
         });
     }
 
